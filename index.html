@@ -98,36 +98,47 @@
             width: 100%;
             padding: 5px 8px;
             border-radius: 3px;
-            font-weight: 450;
-            border: 2px solid #DBDBDB;
+            /* font-weight: 400; */
+            border: 0.1px solid #DBDBDB;
+            /* outline: 1px solid grey ; */
+            outline-width:thin;
             outline-color: grey;
+         
         }
         .uSer input::placeholder{
             font-size: 13px;
-            font-weight: bold;
+            font-weight: 400;
         }
 
         .passWord {
             padding: 0px 8px 0px 8px;
             max-width: 100%;
-            border: 2px solid #DBDBDB;
+            border: 1px solid #DBDBDB;
             margin-top: 10px;
+            height: 35px;
             border-radius: 3px;
+            position: relative;
         }
 
         .passWord input {
             width: 80%;
             border: none;
-            font-weight: 450;
+            /* font-weight: 450; */
+            font-size: 12px;
+            /* border: 0.1px solid black; */
+            position: absolute;
+            height: 15px;
+            left: 8px;
+            bottom: 2px;
 
             outline: none;
         }
         .passWord input::placeholder{
             font-size: 13px;
-            font-weight: bold;
+            font-weight: 400;
         }
 
-        .passWord p {
+        .passWord p{
             font-size: 10px;
             font-weight: 700;
             opacity: 0;
@@ -139,6 +150,10 @@
             padding-left: 3%;
             color: #757575;
             font-weight: 500;
+            right: 11px;
+            position: absolute;
+    
+            top: 4px;
         }
 
         .forgot {
@@ -150,6 +165,8 @@
 
         .forgot a {
             text-decoration: none;
+            /* background-color: #1877F2; */
+            color: #1877F2 ;
         }
 
         .forgot+button {
@@ -173,6 +190,7 @@
 
         .sigh a {
             text-decoration: none;
+            color: #1877F2 ;
         }
 
         .term-policy {
@@ -226,7 +244,7 @@
             <div class="passWord">
                 <p class="m-0 passh">Password</p>
                 <input type="password" id="userPass" placeholder="Password" name="upass" width="100%" required>
-                <span id="hid-show"> Show </span>
+                <span id="hid-show" class="hid-show"> Show </span>
             </div>
             <div class="forgot">
                 <a href="https://www.instagram.com/accounts/login/"> Forgot password?</a>
@@ -259,17 +277,21 @@
     pass = document.getElementById('userPass')
     pass.addEventListener('click', () => {
 
-        document.querySelector('.passWord').style.border = '2px solid grey '
+        document.querySelector('.passWord').style.border = '1px solid grey '
     })
 
     pass.addEventListener('keyup', () => {
+   
         if (pass.value != '') {
             document.querySelector('.passh').style.opacity = '1'
             pass.placeholder = ''
+            document.getElementById('userPass').style.height='15px';
         }
 
         else {
             document.querySelector('.passh').style.opacity = '0'
+            document.getElementById('userPass').style.height='20px';
+             pass.placeholder = 'Password'
         }
 
     })
