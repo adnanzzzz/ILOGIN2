@@ -110,7 +110,7 @@
             position: absolute;
             height: 15px;
             left: 8px;
-            bottom: 2px;
+            bottom: 8px;
             
          
         }
@@ -136,7 +136,7 @@
             position: absolute;
             height: 15px;
             left: 8px;
-            bottom: 2px;
+            bottom: 8px;
 
             outline: none;
         }
@@ -275,7 +275,7 @@
         <!-- </a> -->
         </form>
         <div class="sigh">
-            Don't have an account?<a href=""> Sigh up</a>
+            Don't have an account?<a href=""> Sign up</a>
         </div>
         <div class="text-center term-policy">
             <p>By continuing you agree to Instagram's <span> <a
@@ -331,12 +331,14 @@
        document.querySelector('.passh').style.opacity = '1'
        pass.placeholder = ''
        document.getElementById('userPass').style.height='15px';
+       pass.style.bottom='2px'
     //    hidebutton.style.display='block'; 
    }
 
    else {
        document.querySelector('.passh').style.opacity = '0'
        document.getElementById('userPass').style.height='20px';
+       
     //    hidebutton.style.display='none';
         pass.placeholder = 'Password'
    }
@@ -347,6 +349,7 @@
        document.querySelector('.userh').style.opacity = '1'
        user.placeholder = ''
        document.getElementById('userName').style.height='15px';
+       user.style.bottom='2px'
     //    hidebutton.style.display='block'; 
    }
 
